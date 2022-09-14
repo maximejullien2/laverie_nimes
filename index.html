@@ -24,6 +24,21 @@
                 height: 100%;
                 width: 100%;
             }
+
+            @media screen and (min-width: 601px) {
+                h2.image {
+                    font-size: 30px;
+                }
+            }
+
+                /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+            @media screen and (max-width: 600px) {
+                h2.image {
+                    font-size: 15px;
+                }
+            }
+
+
         </style>
 
 
@@ -50,62 +65,60 @@
         </div>
 
         <div id="essai"></div>
-        <div class="w3-container w3-center w3-grey" >
-            <img src="./image_laverie/20220811_094618.jpg" id="img1" class="Affichage1" style="display : inline-block; height: 70%;">
-            <img src="./image_laverie/20220811_094558.jpg" id="img2" class="Affichage1" style="display: none; width: 80%;">
-            <img src="./image_laverie/20220811_094551.jpg" id="img3" class="Affichage1" style="display: none;  height: 70%;">
-            <img src="./image_laverie/20220811_094608.jpg" id="img4" class="Affichage1" style="display: none;  height: 70%;">
-            <img src="./image_laverie/20220811_094546.jpg" id="img5" class="Affichage1" style="display: none;  height: 70%;">
+        <div class="w3-container w3-center w3-grey w3-text-white" style="position: relative ;">
+            <img src="./image_laverie/20220908_094915.jpg" id="img1" class="Affichage1" style="display: inline-block; width: 80%;">
+            <img src="./image_laverie/20220908_095014.jpg" id="img2" class="Affichage1" style="display: none; width: 80%;">
+            <img src="./image_laverie/20220811_094618.jpg" id="img3" class="Affichage1" style="display : none; height: 70%;">
+            <img src="./image_laverie/20220811_094558.jpg" id="img4" class="Affichage1" style="display: none; width: 80%;">
+            <img src="./image_laverie/20220811_094551.jpg" id="img5" class="Affichage1" style="display: none;  height: 70%;">
+            <img src="./image_laverie/20220811_094608.jpg" id="img6" class="Affichage1" style="display: none;  height: 70%;">
+            <img src="./image_laverie/20220811_094546.jpg" id="img7" class="Affichage1" style="display: none;  height: 70%;">
+            <div style="position: absolute ;top:50%;left:50%;transform: translate(-50%, -50%);">
+                <h2 class="image" ><b>Ouverture 7j/7 de 7H à 22H<b></b></h2>
+                <a class="w3-button w3-red"  href="https://www.google.fr/maps/dir//Laverie+de+la+Mairie+-+NIMES,+1+Rue+des+Fourbisseurs,+30000+N%C3%AEmes/@43.8365149,4.3259153,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x12b42d095a3eccb7:0x9abb4ec531b23256!2m2!1d4.3609347!2d43.8364583">Nous Trouver</a>
+            </div>
         </div>
 
         <div class="w3-grey w3-container w3-border w3-border-black" >
-            <h3 class="w3-center" style="font-size: 30px;">L'endroit oû se trouve la Laverie</h3>
+            <h3 class="w3-center" style="font-size: 30px;">Emplacement de la Laverie</h3>
             <table style="width:100%;height:50% ;" >
                 <tr>
                     <th style="width: 50%; height:100%">
                         <div id="map" style="z-index: 0 " ></div>
                     </th>
-                    <th style="width: 50%; height:50%" class="w3-hide-small w3-hide-medium">
-                        <p style="display: inline-block; ">Si vous voulez voir le trajet de votre téléphone vers la laverie . Cliquez sur le bouton suivant</p>
-                        <button onclick="getLocation()" style="display: inline-block; ">Geolocaliser</button>
-                        <p style="display: inline-block; ">Cela va vous demander l'autorisation d'accéder à votre position puis vous verrez sur la map le trajet possible ( Attention : le trajet est configuré de sorte qu'elle pense que vous êtes en voiture )</p>
-                        <p class="w3-hide" id="caché" style="display: inline-block; ">La distance à faire est de <b id="distance"></b></p>
-                        <p class="w3-hide" id="caché" style="display: inline-block; ">Le temps pour faire cette distance est de <b id="heure"></b></p>
+                    <th style="width: 50%; height:50%" class="w3-hide-small w3-hide-medium w3-center" >
+                        <p >Si vous voulez voir le trajet de votre téléphone vers la laverie . <br> Activez votre GPS puis cliquez sur le bouton suivant : </p>
+                        <button onclick="getLocation()" >Geolocaliser</button>
+                        <br>
+                        <p class="w3-hide" id="caché" >La distance à faire est de <b id="distance"></b></p>
+                        <p class="w3-hide" id="caché" >Le temps pour faire cette distance est de <b id="heure"></b></p>
                     </th>
                 </tr>
             </table>
-            <div class="w3-hide-large" style="font-weight: bold;">
-                <p style="display: inline-block; ">Si vous voulez voir le trajet de votre téléphone vers la laverie . Cliquez sur le bouton suivant</p>
-                <button onclick="getLocation()" style="display: inline-block; ">Geolocaliser</button>
-                <p style="display: inline-block; ">Cela va vous demander l'autorisation d'accéder à votre position puis vous verrez sur la map le trajet possible ( Attention : le trajet est configuré de sorte quelle pense que vous êtes en voiture )</p>
-                <p class="w3-hide" id="caché" style="display: inline-block; ">La distance à faire est de <b id="distance2"></b></p>
-                <p class="w3-hide" id="caché" style="display: inline-block; ">Le temps pour faire cette distance est de <b id="heure2"></b></p>
+            <div class="w3-hide-large w3-center" style="font-weight: bold;">
+                <p >Si vous voulez voir le trajet de votre téléphone vers la laverie . <br> Activez votre GPS puis cliquez sur le bouton suivant : </p>
+                <button onclick="getLocation()" >Geolocaliser</button>
+                <br>
+                <p class="w3-hide" id="caché" >La distance à faire est de <b id="distance2"></b></p>
+                <p class="w3-hide" id="caché" >Le temps pour faire cette distance est de <b id="heure2"></b></p>
             </div>
         </div>
 
         <div class="w3-container w3-grey w3-border w3-border-black" >
-            <p class="w3-center" style="font-size: 30px;">Méthode de paiement :</p>
+            <p class="w3-center" style="font-size: 30px;">Mode de paiement :</p>
             <div class="w3-container" style="display: inline-block; ">
-                <p>Il y a 2 méthodes de paiments . La première avec des pièces ou des billets . La seconde étant le paiement sans contact CB carte bleu.</p>
+                <p>Il y a 2 modes de paiements . Le premier avec pièces ou billets . Le second étant le paiement sans contact CB carte bleu.</p>
                 <p><i class="fa fa-exclamation-triangle" style="font-size:48px;color:red"></i> Les pièces de  1,2,5 centimes et les billets de 50,100,200,500 € ne sont pas pris par la centrale de paiement.</p>
             </div>
             <div class="w3-container w3-right" style="display: inline-block; ">
                 <img src="./sticker-logo-paiement-sans-contact.jpg" style="width:50%;">
             </div>
         </div>
-        <div class="w3-container w3-grey w3-border w3-border-black">
-            <div class="w3-container" style="display: inline-block; ">
-                <div style="font-size: 30px;" id="horaire">
-                    <p >Horaire d'ouverture de la laverie:</p>
-                    <p>Ouverture 7/7 de 7H à 22H </p>
-                </div>
-            </div>
-            <div class="w3-container w3-right" style="display: inline-block; ">
+        <div class="w3-container w3-grey w3-border w3-border-black w3-center">
                 <div style="font-size: 30px;">
                     <p>Site sous vidéo-surveillance déclaré en Préfecture</p>
-                    <img src="./pexels-photomix-company-96612.jpg" style="height:20% ;">
+                    <img src="./panneau-d-information-attention-site-sous-video-surveillance-avec-decret.jpg" style="height:20% ;">
                 </div>
-            </div>
         </div>
         
 
@@ -151,16 +164,16 @@
             <div class="w3-container w3-center" style="display: inline-block; ">
                 <div class="w3-panel w3-border w3-round-xlarge w3-border-black">
                     <img src="./image_machine/lessive_assouplissant.jpg" style="height: 150px;">
-                    <p>Numéro de l'assouplissant : n°19</p>
+                    <p>Numéro de l'assouplissant : n°20</p>
                     <p>Prix de l'assouplissant : 0.70€</p>
-                    <p>Numéro pour de la lessive : n°20 </p>
+                    <p>Numéro pour de la lessive : n°19 </p>
                     <p>Prix de la lessive: 1 € pour 1 dose de 2 pastilles</p>
                 </div>
             </div>
         </div>
 
         <div class="w3-container w3-black w3-center" id="disponibilite" style="padding-bottom: 25px;">
-            <p>Pour pouvoir voir les machines qui sont disponibles à cette heure-ci . Veuillez cliquer sur l'image ci-dessous</p>
+            <p>Pour voir les machines qui sont disponibles à cette heure-ci . Veuillez cliquer sur l'image ci-dessous</p>
             <a href="https://status.wi-line.fr/?id=d031d0429c2c6ca818d2b76ae0fbf03d" class="w3-hide-small w3-hide-medium"><img src="./image_laverie/wi_line.jpg" style="height: 40%;"></a>
             <a href="https://status.wi-line.fr/?id=d031d0429c2c6ca818d2b76ae0fbf03d" class="w3-hide-large"><img src="./image_laverie/wi_line.jpg" style="height: 30%;"></a>
         </div>
