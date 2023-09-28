@@ -1,0 +1,5 @@
+{
+    "require": {
+        "bensontrent/firestore-php": "^3.1"
+    }
+}

@@ -1,0 +1,16 @@
+runtime: php81
+
+handlers:
+  - url: /image_laverie
+    static_dir: image_laverie
+  - url: /image_machine
+    static_dir: image_machine
+  - url: /image
+    static_dir: image
+  - url: /js
+    static_dir: js
+  - url: /css
+    static_dir: css
+
+entrypoint:
+  serve handler.php

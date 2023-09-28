@@ -10,16 +10,10 @@
             crossorigin=""/>
         <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6896087049207463"
-     crossorigin="anonymous"></script>
-    </head>
-
-    <!--Il va représenter le corp de mon site web-->
-    <body>
+        <?php  include "fonction.php"; envoyeApi();?>
         <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-        crossorigin=""></script>
+                integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+                crossorigin=""></script>
         <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
         <style>
             #map{
@@ -33,7 +27,7 @@
                 }
             }
 
-                /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+            /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
             @media screen and (max-width: 600px) {
                 h2.image {
                     font-size: 15px;
@@ -49,19 +43,20 @@
                 50% {color: white;}
                 100% {color: black;}
             }
-
         </style>
+    </head>
 
-
+    <!--Il va représenter le corp de mon site web-->
+    <body>
         <div class="w3-top w3-red" style="z-index: 10;">
             <div class="w3-bar w3-card">
                 <a href="#nb_machine" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium">Machines/Capacités/Prix</a>
-                <a href="https://status.wi-line.fr/?id=d031d0429c2c6ca818d2b76ae0fbf03d" target="_blank" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium">Disponibilité des machines : <span id="animation">Cliquez Ici </span></a>
+                <a href="#tableau" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-hide-medium">Disponibilité des machines : <span id="animation">Cliquez Ici </span></a>
                 <a class="w3-bar-item w3-button w3-padding-large w3-hide-large w3-right" style="height:46.5px ;" id="afficher" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
             </div>
             <div id="navDemo" class="w3-bar-block  w3-hide">
                 <a href="#nb_machine" class="w3-bar-item w3-button w3-padding-large">Machines/Capacités/Prix</a>
-                <a href="https://status.wi-line.fr/?id=d031d0429c2c6ca818d2b76ae0fbf03d" target="_blank" class="w3-bar-item w3-button w3-padding-large">Disponibilité des machines : <span id="animation">Cliquez Ici </span></a>
+                <a href="#tableau" target="_blank" class="w3-bar-item w3-button w3-padding-large">Disponibilité des machines : <span id="animation">Cliquez Ici </span></a>
             </div>
 
         </div>
@@ -93,7 +88,7 @@
                         <p><i class="fa fa-exclamation-triangle" style="font-size:48px;color:red"></i> Les pièces de  1,2,5 centimes et les billets de 50,100,200,500 € ne sont pas pris en compte par la centrale de paiement.</p>
                     </th>
                     <th >
-                        <img src="./sticker-logo-paiement-sans-contact.jpg" >
+                        <img src="image/sticker-logo-paiement-sans-contact.jpg" >
                     </th>
                 </tr>
             </table>
@@ -102,13 +97,13 @@
                 <p><i class="fa fa-exclamation-triangle" style="font-size:48px;color:red"></i> Les pièces de  1,2,5 centimes et les billets de 50,100,200,500 € ne sont pas pris en compte par la centrale de paiement.</p>
             </div>
             <div class="w3-container w3-hide-large w3-hide-medium" style="display: inline-block; ">
-                <img src="./sticker-logo-paiement-sans-contact.jpg" style="width:100%;">
+                <img src="image/sticker-logo-paiement-sans-contact.jpg" style="width:100%;">
             </div> 
         </div>
         <div class="w3-container  w3-border w3-border-black w3-center">
                 <div style="font-size: 30px;">
                     <p>Site sous vidéo-surveillance déclaré en Préfecture</p>
-                    <img src="./panneau-d-information-attention-site-sous-video-surveillance-avec-decret.jpg" style="height:20% ;">
+                    <img src="image/panneau-d-information-attention-site-sous-video-surveillance-avec-decret.jpg" style="max-width:100% ;">
                 </div>
         </div>
         
@@ -123,7 +118,7 @@
                     <img src="./image_machine/machine_8kg_16.jpg" class="Affichages2" style="height: 150px;">
                     <p >Capacité des machines : 8kg</p>
                     <p>Numéro des machines : n°13,14,15,16</p>
-                    <p >Prix : 4.00 €</p>
+                    <p >Prix : <?php getPrix(0);?></p>
                 </div>
             </div>
             <div class="w3-container w3-center" style="display: inline-block; ">
@@ -131,7 +126,7 @@
                     <img src="./image_machine/machine_12kg_17.jpg" style="height: 150px;">
                     <p>Capacité de la machine : 12kg</p>
                     <p>Numéro de la machine : n°17</p>
-                    <p>Prix : 8.00 €</p>
+                    <p>Prix :  <?php getPrix(1);?></p>
                 </div>
                 
             </div>
@@ -140,7 +135,7 @@
                     <img src="./image_machine/machine_18kg_18.jpg" style="height: 150px;">
                     <p>Capacité de la machine : 18kg</p>
                     <p>Numéro de la machine : n°18</p>
-                    <p>Prix : 9.00 €</p>
+                    <p>Prix :  <?php getPrix(2);?></p>
                 </div>
             </div>
             <div class="w3-container w3-center" style="display: inline-block; ">
@@ -149,24 +144,25 @@
                     <img src="./image_machine/sechoir_12.jpg" class="Affichage3" style="height: 150px;">
                     <p>Capacité des séchoirs : 15kg</p>
                     <p>Numéro des séchoirs : n°11,12</p>
-                    <p>Prix : 1.50 € pour 10 minutes</p>
+                    <p>Prix : <?php getPrix(3);?> pour 10 minutes</p>
                 </div>
             </div>
             <div class=" w3-container w3-center" style="display: inline-block; ">
                 <div class="w3-grey w3-panel w3-border w3-round-xlarge w3-border-black">
                     <img src="./image_machine/lessive_assouplissant.jpg" style="height: 150px;">
                     <p>Numéro pour de la lessive : n°19 </p>
-                    <p>Prix de la lessive: 1 € pour 1 dose de 2 pastilles</p>
+                    <p>Prix de la lessive:<?php getPrix(4);?> pour 1 dose de 2 pastilles</p>
                     <p>Numéro de l'assouplissant : n°20</p>
-                    <p>Prix de l'assouplissant : 0.70€</p>
+                    <p>Prix de l'assouplissant : <?php getPrix(5);?></p>
                 </div>
             </div>
         </div>
 
-        <div class="w3-container w3-center" id="disponibilite" style="padding-bottom: 25px;">
-            <p style="font-size: 30px;">Pour voir les machines qui sont disponibles à cette heure-ci . Veuillez cliquer ou scanner l'image ci-dessous</p>
-            <a href="https://status.wi-line.fr/?id=d031d0429c2c6ca818d2b76ae0fbf03d" target="_blank" class="w3-hide-small w3-hide-medium"><img src="./image_laverie/wi_line.jpg" style="height: 40%;"></a>
-            <a href="https://status.wi-line.fr/?id=d031d0429c2c6ca818d2b76ae0fbf03d" target="_blank" class="w3-hide-large"><img src="./image_laverie/wi_line.jpg" style="height: 30%;"></a>
+        <div class="w3-container " id="disponibilite" style="padding-bottom: 25px;">
+            <p class="w3-center" style="font-size: 30px;">Disponibilité des machines </p>
+            <div  id="tableau">
+
+            </div>
         </div>
 
 
@@ -217,14 +213,30 @@
                 <p style="color: white; ">Adresse mail de contact : <a href="mailto:laverie.sorguaise@gmail.com">laverie.sorguaise@gmail.com</a></p>
             </div> 
         </div>
-
+    <div>
+        <?php
+        #De 6 a 15
+        #$secheLinge=$sortie[7];
+        #$machine8kg=$sortie[8];
+        #$machine12kg=$sortie[12];
+        #$machine18kg=$sortie[13];
+        #$lessive=$sortie[14]
+        #$assouplissant=$sortie[15]
+        #Permet de récupérer numéro de la machine explode(",",explode(":",$sortie[7])[1])[0]
+        #Permet de récupérer le type de la machine explode(",",explode(":",$sortie[7])[3])[0];
+        #Permet de savoir si une machine est libre ou non explode(",",explode(":",$sortie[7])[5])[0]
+        #Permet d'avoir la clé de l'api explode(",",explode(":",$sortie[1])[2])[0];
+        #echo strlen($response);
+        #echo $response;
+        ?>
+    </div>
     </body>
     
     
     <!--Sa serait par rapport au lien vers le facebook et les mentions légales-->
     <footer class="w3-container w3-pannel w3-black w3-border w3-center">
-        <p><a href="./mention_légale.html">Mention légales 2022-2023</a></p>
+        <p><a href="mention_legale.php">Mention légales 2022-<?php echo date("Y");?></a></p>
     </footer>
-    <script src="./javascript.js"></script>
-
+    <script src="js/javascript.js">
+    </script>
 </html>
